@@ -18,7 +18,7 @@ clean:
 	rm -f ${FILE}.aux
 	rm -f ${FILE}.blg
 	rm -f ${FILE}.bbl
-	rm -f ${FILE}.dvi 
+	rm -f ${FILE}.dvi
 	rm -f ${FILE}.log
 	rm -f *.log
 	rm -f ${FILE}.lot
@@ -31,7 +31,7 @@ clean:
 	rm -f ${FILE}.idx
 	rm -f ${FILE}.ind
 	rm -f ${FILE}.ilg
-	rm -f ${FILE}.svg 
+	rm -f ${FILE}.svg
 	rm -Rf ${FILE}
 
 ${FILE}.ps: ${FILE}.dvi
@@ -39,12 +39,10 @@ ${FILE}.ps: ${FILE}.dvi
 
 ${FILE}.pdf: ${FILE}.tex
 	${PDFLATEX} ${FILE}.tex
-#	${PDFLATEX} ${FILE}.tex
 	convert -density 300x300 ${FILE}.pdf  -quality 90 ${FILE}.jpg
-	
-${FILE}.dvi: ${FILE}.tex 
+
+${FILE}.dvi: ${FILE}.tex
 	${LATEX} ${FILE}.tex
-#	${LATEX} ${FILE}.tex
 
 ${FILE}.svg: ${FILE}.tex
 	${LATEX} ${FILE}.tex
