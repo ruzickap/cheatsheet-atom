@@ -1,6 +1,6 @@
 Atom Cheatsheet
 ===============
 
-[![Build Status](https://travis-ci.com/ruzickap/cheatsheet-atom.svg?branch=master)](https://travis-ci.com/ruzickap/cheatsheet-atom)
+[![Build Status](https://github.com/ruzickap/cheatsheet-atom/workflows/build/badge.svg)](https://github.com/ruzickap/cheatsheet-atom)
 
 Atom Keyboard Shortcuts
