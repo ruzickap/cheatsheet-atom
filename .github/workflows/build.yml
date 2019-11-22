@@ -9,7 +9,7 @@ jobs:
       DEBIAN_FRONTEND: noninteractive
 
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v1.1.0
       with:
         submodules: recursive
 
