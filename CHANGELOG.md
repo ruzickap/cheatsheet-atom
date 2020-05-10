@@ -1,5 +1,12 @@
 # Changelog
 
+## [v1.0.1](https://github.com/ruzickap/cheatsheet-atom/compare/v1.0.0...v1.0.1) (2020-05-10)
+
+- Fix formatting [`#5`](https://github.com/ruzickap/cheatsheet-atom/pull/5)
+- Fix releasing using GH Action [`#4`](https://github.com/ruzickap/cheatsheet-atom/pull/4)
+- Fix releasing using GH Action [`#3`](https://github.com/ruzickap/cheatsheet-atom/pull/3)
+- CHANGELOG file update [`#2`](https://github.com/ruzickap/cheatsheet-atom/pull/2)
+
 ## v1.0.0 (2020-05-09)
 
 - Use .gitignore as file (not link) [`f415619`](https://github.com/ruzickap/cheatsheet-atom/commit/f4156192f912de9ddafd9838918bf34280f0dcd7)
