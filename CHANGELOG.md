@@ -1,16 +1,25 @@
 # Changelog
 
+## [v1.0.2](https://github.com/ruzickap/cheatsheet-atom/compare/v1.0.1...v1.0.2) (2021-12-03)
+
+- Move from master to main [`#43`](https://github.com/ruzickap/cheatsheet-atom/pull/43)
+- Improve "Upload Release Asset" [`#42`](https://github.com/ruzickap/cheatsheet-atom/pull/42)
+- Use super-linter:slim [`#40`](https://github.com/ruzickap/cheatsheet-atom/pull/40)
+- Replace upload-release-asset by action-gh-release [`#36`](https://github.com/ruzickap/cheatsheet-atom/pull/36)
+- Add GITHUB_TOKEN to super-linter and disable latex checks [`#14`](https://github.com/ruzickap/cheatsheet-atom/pull/14)
+- Add super-linter + fix related issues [`#11`](https://github.com/ruzickap/cheatsheet-atom/pull/11)
+- Move to GitHub's Dependabot [`#8`](https://github.com/ruzickap/cheatsheet-atom/pull/8)
+- Add LICENSE [`#7`](https://github.com/ruzickap/cheatsheet-atom/pull/7)
+
 ## [v1.0.1](https://github.com/ruzickap/cheatsheet-atom/compare/v1.0.0...v1.0.1) (2020-05-10)
 
 - Fix formatting [`#5`](https://github.com/ruzickap/cheatsheet-atom/pull/5)
 - Fix releasing using GH Action [`#4`](https://github.com/ruzickap/cheatsheet-atom/pull/4)
 - Fix releasing using GH Action [`#3`](https://github.com/ruzickap/cheatsheet-atom/pull/3)
-- CHANGELOG file update [`#2`](https://github.com/ruzickap/cheatsheet-atom/pull/2)
 
 ## v1.0.0 (2020-05-09)
 
 - Use .gitignore as file (not link) [`f415619`](https://github.com/ruzickap/cheatsheet-atom/commit/f4156192f912de9ddafd9838918bf34280f0dcd7)
-- Improve dependabot by adding default_labels "dependencies" [`ba3e0ab`](https://github.com/ruzickap/cheatsheet-atom/commit/ba3e0ab78cd7a7ea8a5eddc433ecef3ad8e536ec)
 - Use ubuntu-latest instead of ubuntu-18.04 in GH Actions [`ea4b765`](https://github.com/ruzickap/cheatsheet-atom/commit/ea4b765c6e2691cf755efba9916468680b6250e5)
 - Use submodules=true parameter for actions/checkout [`66ed8e4`](https://github.com/ruzickap/cheatsheet-atom/commit/66ed8e41f59d886e48ac9f5501515bb925691e2b)
 - Use major (v1, v2, v3, etc) version numbers for ease of referencing [`05cd708`](https://github.com/ruzickap/cheatsheet-atom/commit/05cd708bfe3c5a33724c9076a97134b257f364fd)
