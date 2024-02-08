@@ -1,0 +1,9 @@
+CmdLine
+{
+  # Command terminated with space.
+  -n1
+  # Wrong length of dash may have been used.
+  -n8
+  # User Regex: -2:Use \toprule, midrule, or \bottomrule from booktabs.
+  -n44
+}
