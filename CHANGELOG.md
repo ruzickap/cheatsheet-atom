@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.1.0](https://github.com/ruzickap/cheatsheet-atom/compare/v1.0.2...v1.1.0) (2024-06-16)
+
+
+### Features
+
+* **gh:** add default GitHub repo files ([#54](https://github.com/ruzickap/cheatsheet-atom/issues/54)) ([df18113](https://github.com/ruzickap/cheatsheet-atom/commit/df181138cd1880705aa33a148153e84b9e370bf3))
+* **gh:** add default GitHub repo files ([#55](https://github.com/ruzickap/cheatsheet-atom/issues/55)) ([60ba085](https://github.com/ruzickap/cheatsheet-atom/commit/60ba085f0697fb6237d1321a18ad1141468cfd1c))
+* **gha:** unify GHA - renovate, megalinter, markdown, and others ([#51](https://github.com/ruzickap/cheatsheet-atom/issues/51)) ([5cda448](https://github.com/ruzickap/cheatsheet-atom/commit/5cda448b536f182563404b7b826de4539a21138a))
+
 ## [v1.0.2](https://github.com/ruzickap/cheatsheet-atom/compare/v1.0.1...v1.0.2) (2021-12-03)
 
 - Move from master to main [`#43`](https://github.com/ruzickap/cheatsheet-atom/pull/43)
