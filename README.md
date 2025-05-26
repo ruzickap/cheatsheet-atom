@@ -12,18 +12,18 @@ commands, and other useful tips to enhance their productivity with Atom.
 
 This cheatsheet covers a wide array of Atom's functionalities, including:
 
-* General editor operations and file management.
+* General editor operations and file management
 * Efficient text editing: navigation, selection, modification, and
-  bookmarking.
-* Character case transformations.
-* Powerful find and replace tools.
-* View customization: zooming, fullscreen mode, and pane management.
-* Tree view navigation and manipulation.
-* Integrated GitHub features.
-* Commands for the popular Git Plus package.
+  bookmarking
+* Character case transformations
+* Powerful find and replace tools
+* View customization: zooming, fullscreen mode, and pane management
+* Tree view navigation and manipulation
+* Integrated GitHub features
+* Commands for the popular Git Plus package
 * Shortcuts for other helpful Atom plugins (e.g., project-manager,
-  git-time-machine, blame, merge-conflicts, git-diff).
-* Key items from the Command Palette.
+  git-time-machine, blame, merge-conflicts, git-diff)
+* Key items from the Command Palette
 
 ## How to Use This Cheatsheet
 
@@ -34,7 +34,7 @@ formats (like PNG, JPG, SVG), on the
 
 To download:
 
-1. Go to the [Releases page](https://github.com/ruzickap/cheatsheet-atom/releases).
-2. Locate the latest release (usually at the top).
-3. Expand the "Assets" section for that release.
-4. Download `atom_cheatsheet.pdf` or any other desired format.
+1. Go to the [Releases page](https://github.com/ruzickap/cheatsheet-atom/releases)
+2. Locate the latest release (usually at the top)
+3. Expand the "Assets" section for that release
+4. Download `atom_cheatsheet.pdf` or any other desired format
