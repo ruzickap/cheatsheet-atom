@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.2.0](https://github.com/ruzickap/cheatsheet-atom/compare/v1.1.0...v1.2.0) (2025-08-11)
+
+
+### Features
+
+* add default github repo files ([#70](https://github.com/ruzickap/cheatsheet-atom/issues/70)) ([fbc01a5](https://github.com/ruzickap/cheatsheet-atom/commit/fbc01a56a62b9cd1ba4d721cebc80d262b5498e1))
+* add/update default repository files ([#73](https://github.com/ruzickap/cheatsheet-atom/issues/73)) ([36c2e06](https://github.com/ruzickap/cheatsheet-atom/commit/36c2e06b21b7a898622bfab33293c4f35b8b7d73))
+* add/update default repository files ([#74](https://github.com/ruzickap/cheatsheet-atom/issues/74)) ([cc50885](https://github.com/ruzickap/cheatsheet-atom/commit/cc50885fad9c860c7524438cdb6e36f2520b804c))
+* **gh:** add default github repo files ([#67](https://github.com/ruzickap/cheatsheet-atom/issues/67)) ([0abc088](https://github.com/ruzickap/cheatsheet-atom/commit/0abc0887e84cacadd26a4222555948f3f51f47d1))
+
 ## [1.1.0](https://github.com/ruzickap/cheatsheet-atom/compare/v1.0.2...v1.1.0) (2025-02-08)
 
 
