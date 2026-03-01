@@ -25,13 +25,13 @@ primary artifacts are the `.tex` source and supporting shell/YAML files.
 ./run.sh --verbose pdf
 
 # Direct Make (requires local TeX Live installation)
-make          # Default: build PDF
-make pdf      # PDF only
-make png      # PNG only
-make lint     # Run chktex LaTeX linter
-make pretty   # Run latexindent formatter
-make clean    # Remove all generated files
-make mostlyclean  # Remove intermediate files only
+make             # Default: build PDF
+make pdf         # PDF only
+make png         # PNG only
+make lint        # Run chktex LaTeX linter
+make pretty      # Run latexindent formatter
+make clean       # Remove all generated files
+make mostlyclean # Remove intermediate files only
 ```
 
 ## Lint and Validation Commands
