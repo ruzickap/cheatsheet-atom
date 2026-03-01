@@ -42,13 +42,13 @@ shellcheck --exclude=SC2317 run.sh
 shfmt --case-indent --indent 2 --space-redirects --diff run.sh
 
 # Markdown
-rumdl <file.md>
+rumdl file.md
 
 # Link checking
-lychee --accept 200,429 <file.md>
+lychee --accept 200,429 file.md
 
 # JSON (supports comments)
-jsonlint --comments <file.json>
+jsonlint --comments file.json
 
 # LaTeX
 chktex atom_cheatsheet.tex
