@@ -71,7 +71,7 @@ orchestrates all linting tools listed above.
 - Two spaces for indentation everywhere (YAML, JSON, shell, Markdown)
 - No tabs
 - Files must end with a newline
-- Wrap Markdown lines at 72 characters
+- Wrap Markdown lines at 80 characters
 - `CHANGELOG.md` is auto-generated -- never edit it manually
 
 ### Shell Scripts
@@ -175,5 +175,5 @@ Before committing, verify:
 - [ ] `rumdl` passes on all Markdown files
 - [ ] `actionlint` passes if workflow files were modified
 - [ ] `chktex` passes on LaTeX files
-- [ ] Lines wrapped at 72 characters in Markdown
+- [ ] Lines wrapped at 80 characters in Markdown
 - [ ] Commit message follows conventional format
