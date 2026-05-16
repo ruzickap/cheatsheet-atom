@@ -121,7 +121,6 @@ CI runs these scanners -- avoid introducing violations:
 
 - **Checkov**: IaC scanner (skip `CKV_GHA_7`)
 - **DevSkim**: Security patterns (ignore DS162092, DS137138)
-- **KICS**: Fails on HIGH severity only
 - **Trivy**: HIGH/CRITICAL only, ignores unfixed vulnerabilities
 
 ## Version Control
