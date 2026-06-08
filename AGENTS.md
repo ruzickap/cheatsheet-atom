@@ -1,178 +1,63 @@
-# AI Agent Guidelines
+# AGENTS.md
 
-## Project Overview
+Repo-specific notes for agents. Generic markdown/shell/commit/branch/CI
+conventions live in the global `~/.config/opencode/AGENTS.md` and are not
+repeated here.
 
-LaTeX cheatsheet for the Atom text editor (`atom_cheatsheet.tex`),
-compiled to PDF/JPG/PNG/SVG via Docker. No application code -- the
-primary artifacts are the `.tex` source and supporting shell/YAML files.
+## What this repo is
 
-## Build Commands
+A single-document LaTeX project that produces the **Atom editor cheatsheet**.
 
-```bash
-# Full build (PDF + images) via Docker -- requires Docker running
-./run.sh
+- `atom_cheatsheet.tex` is the only real source file. Everything else is build
+  tooling, linters, or CI.
+- Output is a PDF (plus JPG/PNG/SVG) published to GitHub Releases, not committed
+  to the repo. Build artifacts are git-ignored.
 
-# Build only PDF
-./run.sh pdf
+## Build
 
-# Build specific formats
-./run.sh jpg pdf png svg mostlyclean
+- **Build locally with `./run.sh`**, not bare `make`. It runs `make` inside the
+  `ghcr.io/xu-cheng/texlive-full` Docker image, so Docker is required and a
+  local TeX install is not. Default targets: `jpg pdf png svg mostlyclean`.
+- Build one format: `./run.sh pdf`. Override image with `-i` or
+  `LATEX_DOCKER_IMAGE`.
+- `make lint` runs `chktex`; `make pretty` runs `latexindent`. Both need the TeX
+  toolchain, so run them inside the same Docker image if not installed locally.
 
-# Use custom Docker image
-./run.sh -i custom/texlive pdf
+## Do not hand-edit (vendored, self-updating)
 
-# Verbose build
-./run.sh --verbose pdf
+- `Makefile` and `.gitignore` come from the upstream `makefile4latex` project
+  (Takahiro Ueda, MIT header at top of each). They are refreshed via
+  `make upgrade` — edit project behavior through `.latex.mk` and the `*_OPT`
+  variables instead of patching `Makefile`.
+- `.latex.mk` is the project-local Makefile override (currently just sets PDF
+  raster resolution).
 
-# Direct Make (requires local TeX Live installation)
-make             # Default: build PDF
-make pdf         # PDF only
-make png         # PNG only
-make lint        # Run chktex LaTeX linter
-make pretty      # Run latexindent formatter
-make clean       # Remove all generated files
-make mostlyclean # Remove intermediate files only
-```
+## LaTeX gotchas
 
-## Lint and Validation Commands
+- Suppress a specific `chktex` warning inline with a trailing `% chktex NN`
+  comment (see existing uses in `atom_cheatsheet.tex`). Globally disabled checks
+  live in `.chktexrc`.
+- Page geometry is hand-tuned via `\addtolength` offsets; changing margins or
+  adding content can silently overflow the 2-column layout.
 
-```bash
-# Shell scripts
-shellcheck --exclude=SC2317 run.sh
-shfmt --case-indent --indent 2 --space-redirects --diff run.sh
+## Linting & CI
 
-# Markdown
-rumdl file.md
+- All linting runs through **MegaLinter** (`.mega-linter.yml`), triggered in CI
+  on every non-`main` branch. There is no separate local lint command per tool;
+  reproduce CI by running MegaLinter or matching the per-tool args in that file.
+- Markdown is linted by `rumdl` (not markdownlint) and links by `lychee`; both
+  exclude `CHANGELOG.md`.
+- Shell code blocks inside markdown are extracted and shellcheck'd in CI, so
+  fenced `bash`/`sh` examples must be valid scripts.
+- Config files use `keep-sorted` directives (e.g. `.mega-linter.yml`,
+  `.devcontainer/devcontainer.json`); preserve alphabetical order within marked
+  blocks or CI fails.
 
-# Link checking
-lychee --accept 200,429 file.md
+## Releases
 
-# JSON (supports comments)
-jsonlint --comments file.json
-
-# LaTeX
-chktex atom_cheatsheet.tex
-
-# GitHub Actions workflows
-actionlint
-
-# Makefile
-checkmake Makefile
-```
-
-There is no test suite. The LaTeX compilation itself serves as the
-validation test. CI runs MegaLinter (`.mega-linter.yml`) which
-orchestrates all linting tools listed above.
-
-## Code Style
-
-### General Formatting
-
-- Two spaces for indentation everywhere (YAML, JSON, shell, Markdown)
-- No tabs
-- Files must end with a newline
-- Wrap Markdown lines at 80 characters
-- `CHANGELOG.md` is auto-generated -- never edit it manually
-
-### Shell Scripts
-
-- Start with `#!/usr/bin/env bash` and `set -euo pipefail`
-- Uppercase for all variables: `${MY_VARIABLE}`
-- Use `${var}` brace syntax, not `$var`
-- Format with `shfmt --case-indent --indent 2 --space-redirects`
-- Must pass `shellcheck` (SC2317 excluded)
-- Redirect stderr: `command > /dev/null 2>&1`
-- Use `[[ ]]` for conditionals, not `[ ]`
-
-### LaTeX
-
-- Linter: `chktex` (warnings 1, 8, 44 disabled via `.chktexrc`)
-- Suppress specific warnings inline: `% chktex <number>`
-- Use `\keys{}` macro from `menukeys` for keyboard shortcuts
-- Use `\textbf{}` to highlight mnemonic letters
-
-### YAML (GitHub Actions Workflows)
-
-- Start files with `---`
-- Use `# keep-sorted start` / `# keep-sorted end` blocks for
-  alphabetically sorted sections
-- Descriptive step names
-- Always set `permissions: read-all` (least privilege)
-- Pin all actions to full SHA commits, never use tags
-- Set `timeout-minutes` on every job (5-10 minutes)
-- Validate changes with `actionlint` before committing
-
-### Markdown
-
-- Use proper heading hierarchy (no skipped levels)
-- Include language identifiers in code fences
-- Shell code blocks (`bash`/`shell`/`sh`) are extracted and validated
-  by ShellCheck and shfmt during CI
-- Prefer code fences over inline code for multi-line examples
-
-### JSON
-
-- Must pass `jsonlint --comments`
-- `.devcontainer/devcontainer.json` is excluded from linting
-
-## Security Scanning
-
-CI runs these scanners -- avoid introducing violations:
-
-- **Checkov**: IaC scanner (skip `CKV_GHA_7`)
-- **DevSkim**: Security patterns (ignore DS162092, DS137138)
-- **Trivy**: HIGH/CRITICAL only, ignores unfixed vulnerabilities
-
-## Version Control
-
-### Commit Messages
-
-Conventional commit format: `<type>: <description>`
-
-- Types: `feat`, `fix`, `docs`, `chore`, `refactor`, `test`, `style`,
-  `perf`, `ci`, `build`, `revert`
-- Subject: imperative mood, lowercase, no period, max 72 characters
-- Body: wrap at 72 characters, explain what and why
-- Reference issues: `Fixes #123`, `Closes #456`, `Resolves #789`
-
-```text
-feat: add automated dependency updates
-
-- Implement Dependabot configuration
-- Configure weekly security updates
-
-Resolves: #123
-```
-
-### Branching
-
-Follow [Conventional Branch](https://conventional-branch.github.io/)
-format: `<type>/<description>`
-
-- `feature/` or `feat/`: new features
-- `bugfix/` or `fix/`: bug fixes
-- `hotfix/`: urgent fixes
-- `release/`: releases (e.g., `release/v1.2.0`)
-- `chore/`: non-code tasks
-
-Use lowercase, hyphens, no consecutive/leading/trailing hyphens.
-Include issue number when applicable: `feature/issue-42-add-shortcuts`
-
-### Pull Requests
-
-- Always create as **draft** initially
-- Title must follow conventional commit format
-- Include clear description of changes and motivation
-- Link related issues with `Fixes`, `Closes`, or `Resolves`
-
-## Quality Checklist
-
-Before committing, verify:
-
-- [ ] `shellcheck` passes on all shell scripts
-- [ ] `shfmt --diff` shows no formatting changes
-- [ ] `rumdl` passes on all Markdown files
-- [ ] `actionlint` passes if workflow files were modified
-- [ ] `chktex` passes on LaTeX files
-- [ ] Lines wrapped at 80 characters in Markdown
-- [ ] Commit message follows conventional format
+- Releases are automated by **release-please** (`release-type: simple`) from
+  Conventional Commits merged to `main`. It opens a release PR; merging it tags
+  the release and triggers `release-please.yml` to build and upload the document
+  assets.
+- `CHANGELOG.md` is generated by release-please — never edit it by hand (it is
+  excluded from all linters for this reason).
